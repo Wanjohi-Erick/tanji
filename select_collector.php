@@ -219,8 +219,13 @@
                             <div class="grid-col-1 flex-row">
                                 <h3 id="price-to-set">
                                     <?php
-                                        //$size = sizeof($result);
+                                        require 'dbConn.php';
+                                        $selectQuery = "SELECT * FROM collectors WHERE `Name` = '$name'";
                                         echo $ppKilometer;
+                                        $selectQueryfx = mysqli_query($$connect, $selectQuery);
+                                        $result = mysqli_fetch_query($selectQueryfx);
+                                        $ppKilometer = $result["Price Per Kilometer"];
+                                        
                                     ?>
                                 </h3>
                                 <p style="margin: .3rem;">Cash</p>
