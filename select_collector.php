@@ -73,24 +73,38 @@
                 <div id="orderLayout" class="form blue-background" style="margin-top: 0%; height: 60vh;">
                     <div class="list-container">
                         <ul>
-                            <li>
-                                <a href="#" onclick="orderLayout()">
-                                    <div class="grid-3">
-                                        <div class="grid-3-col-1">
-                                            <i class="fas fa-truck"></i>
+                            <?php
+                            require_once("dbConn.php");
+                            $getCollectorsQuery = "SELECT * FROM `collectors`";
+                            $getCollectorsFx = mysqli_query($connect, $getCollectorsQuery);
+                            while ($result = mysqli_fetch_array($getCollectorsFx)) {
+                                $name = $result["Name"];
+                                $tagline = $result["Tagline"];
+                                $ppKilometer = $result["Price Per Kilometer"];
+                                echo '
+                                <li>
+                                    <a href="#" onclick="orderLayout()">
+                                        <div class="grid-3">
+                                            <div class="grid-3-col-1">
+                                                <i class="fas fa-truck"></i>
+                                            </div>
+                                            <div class="grid-3-col-2">
+                                                <h3 id="garbage-collectors">'.$name.'</h3>
+                                                <p>'.$tagline.'</p>
+                                                <p>In 6min.</p>
+                                                <p>02:23pm</p>
+                                            </div>
+                                            <div class="grid-3-col-3">
+                                                <h3 id="price">KES '.$ppKilometer.'</h3>
+                                            </div>
                                         </div>
-                                        <div class="grid-3-col-2">
-                                            <h3 id="garbage-collectors">Dawac Garbage Collectors</h3>
-                                            <p>Reliable, everyday collection</p>
-                                            <p>In 6min.</p>
-                                            <p>02:23pm</p>
-                                        </div>
-                                        <div class="grid-3-col-3">
-                                            <h3 id="price">KES 240</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
+                                ';
+                            }
+                                
+                            ?>
+                            <!--
                             <li>
                                 <a href="#" onclick="orderLayout()">
                                     <div class="grid-3">
@@ -180,7 +194,7 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="payment-method">
@@ -203,7 +217,12 @@
                                 <i class="far fa-credit-card"></i>
                             </div>
                             <div class="grid-col-1 flex-row">
-                                <h3 id="price-to-set">Price Kes 240</h3>
+                                <h3 id="price-to-set">
+                                    <?php
+                                        //$size = sizeof($result);
+                                        echo $ppKilometer;
+                                    ?>
+                                </h3>
                                 <p style="margin: .3rem;">Cash</p>
                             </div>
                         </div>
