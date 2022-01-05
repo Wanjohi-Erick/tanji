@@ -32,10 +32,10 @@
                         <a href="about.html">About Us</a>
                     </li>
                     <li class="nav-link">
-                        <a href="contact.html">How Tanji works</a>
+                        <a href="how-tanji-works.html">How Tanji works</a>
                     </li> 
                     <li class="nav-link">
-                        <a href="contact.html">Cities</a>
+                        <a href="cities.html">Cities</a>
                     </li> 
                     <li class="nav-link">
                         <a href="request_collection.php?username=<?php
