@@ -43,15 +43,21 @@
             </ul>
         </div>
         <div>
-          <ul class="nav-user">
-            <li class="nav-link">
-              <i class="text-white fas fa-user-tie"></i> &nbsp;
-              <a href="login.php">Login</a>
-          </li> 
-          <li class="nav-link">
-              <a href="signup.php">Sign Up</a>
-          </li>
-          </ul>
+            <ul id="nav-user" class="nav-user">
+                    <li class="nav-link">
+                        <a href="">Welcome,
+                            <?php
+                                $username = $_GET["username"];
+                                echo '
+                                <span id="result">'.$username.'</span>
+                                ';
+                            ?>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="index.php"><i class="fas fa-user"></i>&nbsp; Logout</a>
+                    </li>
+                </ul>
         </div>
     </div>
 </nav>
@@ -61,8 +67,12 @@
     <section class="main-grid-2">
         <div class="grid-col-2 bordered">
             <div  id="toggle-orders-show" class="form select-collector" style="margin-top: 5vh;">
-                <h2>Request from Tuzo Road</h2> <br>
-                <h2>Request to Dawac Garbage Collectors</h2>
+                <h2 id = "place"> 
+                    <script>
+                        var place = localStorage.getItem("place");
+                        document.getElementById("place").innerHTML = "Request from " + place;
+                    </script>
+                </h2> <br>
                 <div id="orderLayout" class="form blue-background" style="margin-top: 0%; height: 60vh;">
                     <div class="list-container">
                         <ul>
@@ -92,6 +102,78 @@
                                         </div>
                                         <div class="grid-3-col-2">
                                             <h3>Smart Citi Cleaning Limited</h3>
+                                            <p>Quick Collections Everyday</p>
+                                            <p>In 9min.</p>
+                                            <p>02:23pm</p>
+                                        </div>
+                                        <div class="grid-3-col-3">
+                                            <h3>KES 420</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="orderLayout()">
+                                    <div class="grid-3">
+                                        <div class="grid-3-col-1">
+                                            <i class="fas fa-truck"></i>
+                                        </div>
+                                        <div class="grid-3-col-2">
+                                            <h3 id="garbage-collectors">Comfort Garbage Collectors</h3>
+                                            <p>Fro all your garbage collection needs</p>
+                                            <p>In 12min.</p>
+                                            <p>02:29pm</p>
+                                        </div>
+                                        <div class="grid-3-col-3">
+                                            <h3 id="price">KES 340</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="orderLayout()">
+                                    <div class="grid-3">
+                                        <div class="grid-3-col-1">
+                                            <i class="fas fa-truck"></i>
+                                        </div>
+                                        <div class="grid-3-col-2">
+                                            <h3>Mossaic Collection Limited</h3>
+                                            <p>Quick Collections Everywhere</p>
+                                            <p>In 2min.</p>
+                                            <p>02:19pm</p>
+                                        </div>
+                                        <div class="grid-3-col-3">
+                                            <h3>KES 220</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="orderLayout()">
+                                    <div class="grid-3">
+                                        <div class="grid-3-col-1">
+                                            <i class="fas fa-truck"></i>
+                                        </div>
+                                        <div class="grid-3-col-2">
+                                            <h3 id="garbage-collectors">Alpine Garbage Collectors</h3>
+                                            <p>Reliable, everyday collection</p>
+                                            <p>In 6min.</p>
+                                            <p>02:23pm</p>
+                                        </div>
+                                        <div class="grid-3-col-3">
+                                            <h3 id="price">KES 240</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="orderLayout()">
+                                    <div class="grid-3">
+                                        <div class="grid-3-col-1">
+                                            <i class="fas fa-truck"></i>
+                                        </div>
+                                        <div class="grid-3-col-2">
+                                            <h3>Algo city Cleaning Limited</h3>
                                             <p>Quick Collections Everyday</p>
                                             <p>In 9min.</p>
                                             <p>02:23pm</p>
@@ -186,6 +268,7 @@
     function restoreLayout() {
         document.getElementById("toggle-orders-collapse").style.display = "none";
         document.getElementById("toggle-orders-show").style.display = "block";
+        alert("The request has been cancelled successfully");
     }
 
     function waitingLayout() {
@@ -196,6 +279,7 @@
     function cancelWait() {
         document.getElementById("toggle-wait-collapse").style.display = "none";
         document.getElementById("toggle-orders-show").style.display = "block";
+        alert("The request has been cancelled successfully");
     }
 </script>
 <script>

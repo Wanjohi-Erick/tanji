@@ -37,9 +37,6 @@
                     <li class="nav-link">
                         <a href="contact.html">Cities</a>
                     </li> 
-                    <li class="nav-link">
-                        <a href="request_collection.html">Request Collection</a>
-                    </li> 
                 </ul>
             </div>
             <div>

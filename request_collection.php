@@ -40,21 +40,24 @@
                 <li class="nav-link">
                     <a href="contact.html">Help</a>
                 </li>  
-                <li class="nav-link">
-                    <a href="select_collector.html">Select Collector</a>
-                </li>  
             </ul>
         </div>
         <div>
-          <ul class="nav-user">
-            <li class="nav-link">
-              <i class="text-white fas fa-user-tie"></i> &nbsp;
-              <a href="login.php">Login</a>
-          </li> 
-          <li class="nav-link">
-              <a href="signup.php">Sign Up</a>
-          </li>
-          </ul>
+            <ul id="nav-user" class="nav-user">
+                    <li class="nav-link">
+                        <a href="">Welcome,
+                            <?php
+                                $username = $_GET["username"];
+                                echo '
+                                <span id="result">'.$username.'</span>
+                                ';
+                            ?>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="index.php"><i class="fas fa-user"></i>&nbsp; Logout</a>
+                    </li>
+                </ul>
         </div>
     </div>
 </nav>
@@ -65,9 +68,12 @@
         <div class="grid-col-2">
             <div class="form blue-background">
                 <h2>Request for collection right now</h2>
-                <input type="text" placeholder="Enter pickup location" id="pickupLocation" name="pickupLocation" /> <br>
+                <input type="text" placeholder="Enter pickup location" id="pickupLocation" name="pickupLocation" required /> <br>
                 <div class="divide-input">
-                <a href="select_collector.html"><input type="button" value="Request Now" id="requestNow" name="requestNow" class="btn" /></a> <br>
+                <a href="select_collector.php?username=<?php 
+                    $username = $_GET["username"];
+                    echo $username;
+                ?>"><input type="button" value="Request Now" onClick="getText()" id="requestNow" name="requestNow" class="btn" /></a> <br>
                 <input type="button" value="Schedule for Later" id="scheduleForLater" name="scheduleForLater" class="btn last-child" /> <br>
                 </div>
             </div>
@@ -80,6 +86,11 @@
 </body>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1orobUaNa2Wd6gWbtpMeKPDurY4GFu3o&callback=initMap&libraries=places"></script>
 <script>
+    function getText() {
+        var place = document.getElementById("pickupLocation").value;
+        localStorage.setItem("place", place);
+    }
+
     function initMap() {
         var map = new google.maps.Map(document.getElementById("map"), {
             center: {lat: -0.4306906, lng: 36.9495283}, zoom: 13

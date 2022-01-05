@@ -38,7 +38,10 @@
                         <a href="contact.html">Cities</a>
                     </li> 
                     <li class="nav-link">
-                        <a href="request_collection.html">Request Collection</a>
+                        <a href="request_collection.php?username=<?php
+                            $username = $_GET["username"];
+                            echo $username;
+                        ?>">Request Collection</a>
                     </li> 
                 </ul>
             </div>
