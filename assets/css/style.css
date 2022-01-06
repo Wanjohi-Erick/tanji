@@ -97,12 +97,20 @@ span {
     margin: 0 5vw;
 }
 
+.container-smaller {
+    margin: 0 15vw;
+}
+
 .text-gray {
     color: var(--text-gray);
 }
 
 .text-white {
     color: var(--white);
+}
+
+a .text-dark {
+    color: var(--bg-color) !important;
 }
 
 p {
@@ -750,13 +758,11 @@ main .main-grid-2 .grid-col-2 .form p a {
 }
 
 main .main-grid-2 .grid-col-2 .form .divide-input {
-    display: flex;
-    flex-wrap: wrap;
     width: 100vw;
 }
 
 main .main-grid-2 .grid-col-2 .form .divide-input input {
-    width: 40%;
+    width: 85%;
     margin-right: 0%;
 }
 

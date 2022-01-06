@@ -71,7 +71,6 @@
                     $username = $_GET["username"];
                     echo $username;
                 ?>"><input type="button" value="Request Now" onClick="getText()" id="requestNow" name="requestNow" class="btn" /></a> <br>
-                <input type="button" value="Schedule for Later" id="scheduleForLater" name="scheduleForLater" class="btn last-child" /> <br>
                 </div>
             </div>
           </div>
