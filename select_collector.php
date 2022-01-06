@@ -104,97 +104,6 @@
                             }
                                 
                             ?>
-                            <!--
-                            <li>
-                                <a href="#" onclick="orderLayout()">
-                                    <div class="grid-3">
-                                        <div class="grid-3-col-1">
-                                            <i class="fas fa-truck"></i>
-                                        </div>
-                                        <div class="grid-3-col-2">
-                                            <h3>Smart Citi Cleaning Limited</h3>
-                                            <p>Quick Collections Everyday</p>
-                                            <p>In 9min.</p>
-                                            <p>02:23pm</p>
-                                        </div>
-                                        <div class="grid-3-col-3">
-                                            <h3>KES 420</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="orderLayout()">
-                                    <div class="grid-3">
-                                        <div class="grid-3-col-1">
-                                            <i class="fas fa-truck"></i>
-                                        </div>
-                                        <div class="grid-3-col-2">
-                                            <h3 id="garbage-collectors">Comfort Garbage Collectors</h3>
-                                            <p>Fro all your garbage collection needs</p>
-                                            <p>In 12min.</p>
-                                            <p>02:29pm</p>
-                                        </div>
-                                        <div class="grid-3-col-3">
-                                            <h3 id="price">KES 340</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="orderLayout()">
-                                    <div class="grid-3">
-                                        <div class="grid-3-col-1">
-                                            <i class="fas fa-truck"></i>
-                                        </div>
-                                        <div class="grid-3-col-2">
-                                            <h3>Mossaic Collection Limited</h3>
-                                            <p>Quick Collections Everywhere</p>
-                                            <p>In 2min.</p>
-                                            <p>02:19pm</p>
-                                        </div>
-                                        <div class="grid-3-col-3">
-                                            <h3>KES 220</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="orderLayout()">
-                                    <div class="grid-3">
-                                        <div class="grid-3-col-1">
-                                            <i class="fas fa-truck"></i>
-                                        </div>
-                                        <div class="grid-3-col-2">
-                                            <h3 id="garbage-collectors">Alpine Garbage Collectors</h3>
-                                            <p>Reliable, everyday collection</p>
-                                            <p>In 6min.</p>
-                                            <p>02:23pm</p>
-                                        </div>
-                                        <div class="grid-3-col-3">
-                                            <h3 id="price">KES 240</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="orderLayout()">
-                                    <div class="grid-3">
-                                        <div class="grid-3-col-1">
-                                            <i class="fas fa-truck"></i>
-                                        </div>
-                                        <div class="grid-3-col-2">
-                                            <h3>Algo city Cleaning Limited</h3>
-                                            <p>Quick Collections Everyday</p>
-                                            <p>In 9min.</p>
-                                            <p>02:23pm</p>
-                                        </div>
-                                        <div class="grid-3-col-3">
-                                            <h3>KES 420</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li> -->
                         </ul>
                     </div>
                     <div class="payment-method">
@@ -219,7 +128,7 @@
                             <div class="grid-col-1 flex-row">
                                 <h3 id="price-to-set">
                                     <?php
-                                    echo $ppKilometer;
+                                        echo $ppKilometer;
                                     ?>
                                 </h3>
                                 <p style="margin: .3rem;">Cash</p>
@@ -230,7 +139,12 @@
                                 <i class="fas fa-map-marker"></i>
                             </div>
                             <div class="grid-col-1">
-                                <h3>Tuzo Road</h3>
+                                <h3 id = "destination">
+                                    <script>
+                                        var destination = localStorage.getItem("place");
+                                        document.getElementById("destination").innerHTML = destination;
+                                    </script>
+                                </h3>
                             </div>
                         </div>
                         <div class="main-grid-2">
@@ -238,7 +152,11 @@
                                 <i class="far fa-credit-card"></i>
                             </div>
                             <div class="grid-col-1">
-                                <h3>Dawac Garbage Collectors</h3>
+                                <h3>
+                                    <?php
+                                        echo $name;
+                                    ?>
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -278,6 +196,8 @@
         var price = document.getElementById("price").value;
         document.getElementById("toggle-orders-show").style.display = "none";
         document.getElementById("toggle-orders-collapse").style.display = "block";
+        var collector = document.getElementById("garbage-collectors").value;
+        localStorage.setItem("collector", collector);
     }
 
     function restoreLayout() {
@@ -356,88 +276,6 @@
         });
     }
 </script>
-
-<script type="module">
-
-    // Import the functions you need from the SDKs you need
-  
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
-    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js";
-  
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-analytics.js";
-  
-    // TODO: Add SDKs for Firebase products that you want to use
-  
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-  
-    // Your web app's Firebase configuration
-  
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  
-    const firebaseConfig = {
-  
-      apiKey: "AIzaSyDVma7oqYnR8bNI8qR_zKbnflFossY-zUE",
-  
-      authDomain: "tanji-4bbd2.firebaseapp.com",
-  
-      databaseURL: "https://tanji-4bbd2-default-rtdb.firebaseio.com",
-  
-      projectId: "tanji-4bbd2",
-  
-      storageBucket: "tanji-4bbd2.appspot.com",
-  
-      messagingSenderId: "348908810958",
-  
-      appId: "1:348908810958:web:b41749a3b530e59660569f",
-  
-      measurementId: "G-0F1YNN593E"
-  
-    };
-  
-  
-    // Initialize Firebase
-  
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    const auth = getAuth();
-  
-    const analytics = getAnalytics(app);
-    document.getElementById('signUp').addEventListener('click', (e) => {
-
-      var phone = document.getElementById('phone').value;
-      var firstname = document.getElementById('firstname').value;
-      var lastname = document.getElementById('lastname').value;
-      var email = document.getElementById('email').value;
-      var password = document.getElementById('password').value;
-      var region = document.getElementById('region').value;
-
-      createUserWithEmailAndPassword(auth, email, phone, firstname, lastname, password, region)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        set(ref(database, 'users/' + user.uid), {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          phone: phone,
-          region: region
-        })
-        alert('User Created');
-        window.open('index.html');
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        alert(errorMessage);
-        // ..
-      });
-    })
-  
-  </script>
   <script src="js/jquery3.6.0.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/main.js"></script>
