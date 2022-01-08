@@ -65,7 +65,6 @@
                 <input type="submit" value="Login" id="login" name="login">
             </div>
             </form>
-            <p>Don't have an account yet? <a href="signup.html">Sign up</a></p>
         </section>
     </main>
 </body>
@@ -80,7 +79,7 @@
     $email = $_POST["Email"];
     $password = $_POST["password"];
 
-    $checkUserSQL = "SELECT * FROM `users` WHERE `Email` = '$email'";
+    $checkUserSQL = "SELECT * FROM `admins` WHERE `Email` = '$email'";
     $checkUserFx = mysqli_query($connect, $checkUserSQL);
     $result = mysqli_fetch_array($checkUserFx);
     $dbPass = $result["Password"];
@@ -100,7 +99,7 @@
         </script>
         ';
       } else {
-        header('Location: dashboard.php?username='.$firstName.'');
+        header('Location: adminDashboard.php?username='.$firstName.'');
       }
     }
   }
