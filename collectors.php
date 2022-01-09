@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
 </head>
-<body class="body">
+<body>
 
     <!-------------------Navigation------------------->
 
@@ -64,16 +64,6 @@
                         <a href="index.php"><i class="fas fa-user"></i>&nbsp; Logout</a>
                     </li>
                 </ul>
-              <ul id="nav-login" class="nav-user">
-                <li class="nav-link">
-                  <i class="text-white fas fa-user-tie"></i> &nbsp;
-                  <a href="login.php">Login</a>
-                </li> 
-                <li class="nav-link">
-                  <a href="signup.php">Sign Up</a>
-                </li>
-
-              </ul>
             </div>
         </div>
     </nav>
@@ -82,37 +72,45 @@
 
     <!-----------------Main Site Section----------------->
     <main>
-        <section class="container">
-            <div class="site-background">
-                <div class="site-content">
-                  <div class="col-1">
-                    <h2>Welcome to <br>
-                        your admin<br>
-                        account</h2>
-                  </div>
+        <table class="table table-hover table-striped text-center">
+            <thead class="thead">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Tagline</th>
+                <th>Price Per Kilometer </th>
+                <th>Action</th>
+                
+            </thead>
+            <tbody>
+                <?php
+                require "dbConn.php";
+                    $getFromInputSql = "SELECT * FROM `collectors`";
+                    $getFromInputQuery = mysqli_query($connect, $getFromInputSql);
+                    
 
-                  <div class="col-2">
-                    <h2><i class="fas fa-truck"></i></h2>
-                  </div>
-                </div>
-                <a id="signin" href="login.html"><button class="btn btn-primary">Sign In</button></a>
-            </div>
-        </section>
+                    while($resultFromInput = mysqli_fetch_array($getFromInputQuery)){
+                        $id = $resultFromInput["ID"];
+                        $name = $resultFromInput["Name"];
+                        $tagline = $resultFromInput["Tagline"];
+                        $ppKilometer = $resultFromInput["Price Per Kilometer"];
 
-        <!----------xxx----------Site Content---------xxx------------>
-
+                        echo'
+                        <tr>
+                            <td>'.$id.'</td>
+                            <td>'.$name.'</td>
+                            <td>'.$tagline.'</td>
+                            <td>'.$ppKilometer.'</td>
+                            <td><a class = "link" href="update.php" target="_blank" rel="noopener noreferrer">Update</a> | 
+                                <a class = "link" href="delete.php" target="_blank" rel="noopener noreferrer">Delete</a>
+                            </td>
+                        </tr>
+                        ';
+                    }
+                ?>
+            </tbody>
+        </table>
     </main>
     <!---------xxx--------Main Site Section--------xxx--------->
- 
-    <script>
-        var username = document.getElementById("result").value;
-        if (username == "") {
-           document.getElementById("nav-user").style.display = "none";
-        } else {           
-            document.getElementById("signin").style.display = "none";
-            document.getElementById("nav-login").style.display = "none";
-        }
-    </script>
     <script src="js/jquery3.6.0.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>

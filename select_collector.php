@@ -78,12 +78,13 @@
                             $getCollectorsQuery = "SELECT * FROM `collectors`";
                             $getCollectorsFx = mysqli_query($connect, $getCollectorsQuery);
                             while ($result = mysqli_fetch_array($getCollectorsFx)) {
+                                $id = $result["ID"];
                                 $name = $result["Name"];
                                 $tagline = $result["Tagline"];
                                 $ppKilometer = $result["Price Per Kilometer"];
                                 echo '
                                 <li>
-                                    <a href="#" onclick="orderLayout()">
+                                    <a href="#toggle-orders-collapse?collector='.$name.'" onclick="orderLayout(2)">
                                         <div class="grid-3">
                                             <div class="grid-3-col-1">
                                                 <i class="fas fa-truck"></i>
@@ -152,15 +153,38 @@
                                 <i class="far fa-credit-card"></i>
                             </div>
                             <div class="grid-col-1">
-                                <h3>
-                                    <?php
-                                        echo $name;
+                                <h3 id="name">
+                                    <?php $getName = $_GET["collector"];
+                                    echo $getName;
                                     ?>
                                 </h3>
                             </div>
                         </div>
                     </div>
-                    <input onclick="waitingLayout()" class="btn btn-primary" type="button" value="Confirm">
+                    <form action="" method="post">
+                        <input name = "confirm" class="btn btn-primary" onclick="waitingLayout()" type="submit" value="Confirm">
+                    </form>
+                    <?php
+                        require "dbConn.php";
+                        if (isset($_POST["confirm"])) {
+                            $insertQuery = "INSERT INTO `orders`(`ID`, `Date`, `User`, `Collector`, `Payment Amount`, `Payment Method`) VALUES(NULL, CURRENT_TIMESTAMP, '$username', '$name', '$ppKilometer', 'Cash')";
+                            $insertQueryFX = mysqli_query($connect, $insertQuery);
+                            if ($insertQueryFX) {
+                                echo '
+                                <script>
+                                    alert("Successfully Ordered Collection");
+                                </script>
+                                ';
+                            } else {
+                                $error = mysqli_error($connect);
+                                echo '
+                                <script>
+                                    alert("Failed to order. " '.$error.');
+                                </script>
+                                ';
+                            }
+                        }
+                    ?>
                     <input onclick="restoreLayout()" class="btn btn-primary" type="button" value="Cancel Trip Request">
                 </div>
             </div>
@@ -192,11 +216,12 @@
 </body>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1orobUaNa2Wd6gWbtpMeKPDurY4GFu3o&callback=initMap&libraries=places"></script>
 <script>
-    function orderLayout() {
+    function orderLayout(name) {
         var price = document.getElementById("price").value;
         document.getElementById("toggle-orders-show").style.display = "none";
         document.getElementById("toggle-orders-collapse").style.display = "block";
         var collector = document.getElementById("garbage-collectors").value;
+        document.getElementById("name").innerHTML = name;
         localStorage.setItem("collector", collector);
     }
 

@@ -109,8 +109,8 @@ span {
     color: var(--white);
 }
 
-a .text-dark {
-    color: var(--bg-color) !important;
+main .table td .link {
+    color: var(--web-blue) !important;
 }
 
 p {
@@ -859,6 +859,204 @@ main .main-grid-2 .grid-col-2 .form .list-container .grid-3 .grid-3-col-3 h3 {
 #toggle-wait-collapse {
     display: none;
 }
+
+/*       Table      */
+table {
+    border-collapse: collapse;
+}
+main table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+th {
+    text-align: inherit;
+}
+main .table th,
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+main .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+  }  
+  .table-bordered {
+    border: 1px solid #dee2e6;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+  .table-bordered thead th,
+  .table-bordered thead td {
+    border-bottom-width: 2px;
+  }
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .table-hover tbody tr:hover {
+    color: #212529;
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+/* modal */
+/* =============================================== */
+.modal-container {
+    position: fixed;
+    top: 0;
+  
+    display: none;
+    justify-content: center;
+    align-items: center;
+  
+    width: 50%;
+    height: 70%;
+    margin-left: 25vw;
+    margin-top: 15vh;
+    background: rgb(150, 145, 175);
+  }
+  
+  /* using :target */
+  .modal-container:target {
+    display: flex;
+  }
+  
+  .modal {
+    width: 60rem;
+    padding: 4rem 2rem;
+    border-radius: .8rem;
+  
+    color: var(--light);
+    background: var(--background);
+    box-shadow: .4rem .4rem 2.4rem .2rem hsla(236, 50%, 50%, 0.3);
+    position: relative;
+  
+    overflow: hidden;
+  }
+  
+  .modal__details {
+    text-align: center;
+  
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid hsla(0, 0%, 100%, .4);
+  }
+  
+  .modal__title {
+    font-size: 3.2rem;
+  }
+  
+  .modal__description {
+    margin-top: 2rem;
+  
+    font-size: 1.6rem;
+    font-style: italic;
+  }
+  
+  .modal__text {
+    padding: 0 4rem;
+    margin-bottom: 4rem;
+  
+    font-size: 1.6rem;
+    line-height: 2;
+  }
+  
+  .modal__text::before {
+    content: '';
+  
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+  
+    width: 18rem;
+    height: 18rem;
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    border-radius: 100rem;
+  
+    pointer-events: none;
+  }
+  
+  .modal__btn {
+    padding: 1rem 1.6rem;
+    border: 1px solid hsla(0, 0%, 100%, .4);
+    border-radius: 100rem;
+  
+    color: inherit;
+    background: transparent;
+    font-size: 1.4rem;
+    font-family: inherit;
+    letter-spacing: .2rem;
+  
+    transition: .2s;
+    cursor: pointer;
+  }
+  
+  .modal__btn:hover,
+  .modal__btn:focus {
+    border-color: hsla(0, 0%, 100%, .6);
+    transform: translateY(-.2rem);
+  }
+
+  @media (max-width: 575.98px) {
+    .table-responsive-sm {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive-sm > .table-bordered {
+      border: 0;
+    }
+  }
+  @media (max-width: 767.98px) {
+    .table-responsive-md {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive-md > .table-bordered {
+      border: 0;
+    }
+  }
+  @media (max-width: 991.98px) {
+    .table-responsive-lg {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive-lg > .table-bordered {
+      border: 0;
+    }
+  }
+  @media (max-width: 1199.98px) {
+    .table-responsive-xl {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive-xl > .table-bordered {
+      border: 0;
+    }
+  }
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-responsive > .table-bordered {
+    border: 0;
+  }  
+/*    x  Table   x  */
 
 /*    Viewport less than or equal to 1570px     */
 
